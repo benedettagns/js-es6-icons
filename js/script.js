@@ -116,14 +116,10 @@ const icons = [
 const arrayHtml = document.querySelector('.icona');
 
 icons.forEach(function (icons) {
-    arrayHtml.innerHTML += 
-    `<select>
-        <option>${icons.type}</option>
-        <option>${icons.type}</option>
-        <option>${icons.type}</option>
-        <option>${icons.type}</option>
-    </select>
-    <div class="icona">
-        <i class="color ${icons.family} ${icons.prefix}${icons.name} ${icons.color}"></i>
+    arrayHtml.innerHTML += `
+    <div class="container">
+        <div class="icona">
+            <i class="color ${icons.family} ${icons.prefix}${icons.name} ${icons.color}"></i>
+        </div>
     </div>`
 });
