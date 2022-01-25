@@ -113,13 +113,40 @@ const icons = [
 	}
 ];
 
-const arrayHtml = document.querySelector('.icona');
+const arrayHtml = document.querySelector('.box-icona');
 
 icons.forEach(function (icons) {
     arrayHtml.innerHTML += `
-    <div class="container">
-        <div class="icona">
-            <i class="color ${icons.family} ${icons.prefix}${icons.name} ${icons.color}"></i>
-        </div>
-    </div>`
+		<div class="box-icona">
+			<i class="color ${icons.family} ${icons.prefix}${icons.name} ${icons.color}"></i>
+			<p>${icons.name}</p>
+		</div>`
 });
+
+const elementoSelezionato = document.querySelector('.selezione');
+
+function mostraIcone (container, iconList) {
+	container.innerHTML ='';
+	iconList.forEach(function (icons) {
+		container.innerHTML += `
+		<div class="box-icona">
+			<div class="icone">
+				<i class="color ${icons.family} ${icons.prefix}${icons.name} ${icons.color}"></i>
+				<p>${icons.name}</p>
+			</div>
+		</div>`;
+	})
+}
+
+mostraIcone(arrayHtml, icons);
+
+elementoSelezionato.addEventListener('change', function() {
+	const that = this;
+	const filtra = icons.filter(function (icons){
+		if (that.value === '' || icons.type === that.value){
+			return true;
+	 	} 
+		return false;
+	});
+	mostraIcone(arrayHtml, filtra);
+})
